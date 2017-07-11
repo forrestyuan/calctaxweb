@@ -1,0 +1,13 @@
+/*common*/
+/*------隐藏滚动条------*/
+::-webkit-scrollbar {
+	width: 0;
+}
+/*个人所得税类型*/
+.taxType{position:relative;height:200px;background-color: #262626;padding:10px 10px 10px 25px;box-shadow: 4px 4px 4px #222;overflow: hidden;}
+.taxType li{border-radius:5px ;text-align: center;font-size: 16px;padding: 5px;}
+.taxType li:hover{cursor: pointer;}
+.taxType li:first-child{color: white;list-style: none;font-size: 22px;}
+.taxType li:nth-child(2){background-color:red;border-radius:0;color:white;}
+#hideMoreType,#showMoreType{position: absolute;bottom: -20px;color: deepskyblue;background-color: #222;text-align: center;width: 90%;z-index: 100;}
+#hideMoreType:hover,#showMoreType:hover{cursor: pointer;}

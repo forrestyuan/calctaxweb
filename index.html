@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人所得税速算</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/my.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="row text-center h1 navbar-inverse" style="color: white;">Personal Income Taxes Calculator</h1>
+			<div class="col-md-3">
+				<ul class="taxType">
+					<li>Select Tax Type</li>
+					<li class="tt" data-type = "tt1">工资、薪金所得(月薪)</li>
+					<li class="btn-success h4 tt" data-type = "tt3">年终奖</li>
+					<li class="btn-success h4 tt" data-type = "tt4">劳务报酬所得</li>
+					<li class="btn-success h4 tt" data-type = "tt5">个体工商户的生产、经营所得</li>
+					<li class="btn-success h4 tt" data-type = "tt6">对企事业单位的承包经营、承租经营所得</li>
+					<li class="btn-success h4 tt" data-type = "tt7">稿酬所得</li>
+					<li class="btn-success h4 tt" data-type = "tt8">特许权使用费所得</li>
+					<li class="btn-success h4 tt" data-type = "tt9">利息、股息、红利所得</li>
+					<li class="btn-success h4 tt" data-type = "tt10">财产租赁所得</li>
+					<li class="btn-success h4 tt" data-type = "tt11">财产转让所得</li>
+					<li class="btn-success h4 tt" data-type = "tt12">偶然所得</li>
+					<li class="btn-success h4 tt" data-type = "tt13">经国务院财政部门确定征税的其他所得</li>
+					
+				</ul>
+				<div id="hideMoreType">
+					<span lass="glyphicon glyphicon-chevron-up">隐藏类型</span>
+				</div>
+				<div id="showMoreType">
+					<span lass="glyphicon glyphicon-chevron-down">更多类型</span>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="bg-info col-md-5" >
+				  <form role="form" class="bg-info" >
+				  	<div class="list-group-item active">输入数据</div>
+				  	
+					  <div class="form-group preTaxSalary">
+					    <label for="preTaxSalary">税前工资：</label>
+					    <input type="text" class="form-control" id="preTaxSalary" placeholder="输入税前工资">
+					  </div>
+					  
+					  <div class="form-group shouru">
+					    <label for="shouru">收入金额：</label>
+					    <input type="text" class="form-control" id="shouru" placeholder="输入收入金额">
+					  </div>
+					  
+					  <div class="form-group insurance">
+					    <label for="insurance">各项社会保险费：</label>
+					    <input type="text" class="form-control" id="insurance" placeholder="输入各项社会保险费">
+					  </div>
+					  
+					  <div class="form-group startPoint">
+					    <label for="startPoint">起征点：</label>
+					    <select id="startPoint">
+								<option value="3500">3500</option>
+								<option value="4800">4800</option>
+						</select>
+					  </div>
+					  
+					   <div class="form-group time">
+					    <label for="time">经营时间：</label>
+					    <select id="time">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+						</select>
+					  </div>
+					  
+					  <div class="form-group yearPrice">
+					    <label for="yearPrice">年终奖金：</label>
+					    <input type="text" class="form-control" id="yearPrice" placeholder="输入年终奖金">
+					  </div>
+					  
+					  <span class="btn btn-success" id="calculate" data-type="1">提交</span>
+					  <button type="reset" class="btn btn-default">重置</button>
+				  </form>
+				</div>
+				<div class="col-md-7">
+					<div class="list-group">
+					   <a href="#" class="list-group-item active">
+					    	<span> --计算结果--</span>
+					    	<span id="istuhao" class="h3 btn-danger istuhao">土豪</span>
+					   </a>
+					   <span class="list-group-item monthAverageSalary "><mark>平均每月：</mark><span id="monthAverageSalary">0</span>元</span>
+					   <span class="list-group-item delPrice "><mark>减除费用：</mark><span id="delPrice">0</span>元</span>
+					   <span class="list-group-item cutMoney "><mark>应纳税所得金额：</mark><span id="cutMoney">0</span>元</span>
+					   <span class="list-group-item taxRate "><mark>适用税率：</mark><span id="taxRate">20%</span></span>
+					   <span class="list-group-item quickCutNum "><mark>速算扣除数：</mark><span id="quickCutNum">0.00</span>元</span>
+					   <span class="list-group-item delIncome "><mark>应缴税款：</mark><span id="delIncome">0.00元</span>元</span>
+					   <span class="list-group-item realSalary"><mark>实发工资：</mark><span id="realSalary">0.00</span>元</span>
+					   <span class="list-group-item postIncome"><mark>税后收入：</mark><span id="postIncome">0.00</span>元</span>
+					</div>
+				</div>
+			</div>
+			 <div class="bg-primary col-md-9 text-center navbar-right" id="showFormu">
+				这里显示的计算公式
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/my.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
